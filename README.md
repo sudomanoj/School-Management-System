@@ -27,4 +27,6 @@ A Django-based school management system with REST API capabilities.
 
 4. **Go to the src folder and create .env file as like .env-sample and migrate and then run server**
    ```bash
+   cd src
+   python manage.py migrate
    python manage.py runserver

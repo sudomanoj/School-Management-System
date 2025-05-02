@@ -24,12 +24,11 @@ environ.Env.read_env(BASE_DIR / ".env")
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-%*3+dnm&4=vip!cm-p^m@2*&1=-z7wfy4_!@w(xm+7%zxwxt#q'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
 
 # Application definition
@@ -156,15 +155,15 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=env.int('ACCESS_TOKEN_LIFETIME')),  # Access token lifetime (e.g., 15 minutes)
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=env.int('REFRESH_TOKEN_LIFETIME')),  # Refresh token lifetime (e.g., 7 days)
-    'ROTATE_REFRESH_TOKENS': True,  # Enable token rotation (to rotate refresh tokens)
-    'BLACKLIST_AFTER_ROTATION': True,  # Blacklist the previous refresh token after rotation
-    'UPDATE_LAST_LOGIN': True,  # Update the user's last login time
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=env.int('ACCESS_TOKEN_LIFETIME')),  
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=env.int('REFRESH_TOKEN_LIFETIME')), 
+    'ROTATE_REFRESH_TOKENS': True, 
+    'BLACKLIST_AFTER_ROTATION': True,  
+    'UPDATE_LAST_LOGIN': True, 
 }
 
 SWAGGER_SETTINGS = {
-    'USE_SESSION_AUTH': True,  # Disable session-based authentication if you use tokens
+    'USE_SESSION_AUTH': True,  
     'SECURITY_DEFINITIONS': {
         'Bearer': {
             'type': 'apiKey',
